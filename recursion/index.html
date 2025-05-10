@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recursive Squares Animation</title>
+    <!-- Import the p5.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+    <style>
+      body {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f0f0f0;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      function setup() {
+        createCanvas(400, 400);
+        noLoop();
+      }
+
+      function draw() {
+        const numSquares = 20;
+        const offsetIncrement = width / (2 * numSquares);
+        const startColor = color(255, 0, 0);
+        const endColor = color(255, 255, 255);
+        drawSquaresRec(0, numSquares, offsetIncrement, startColor, endColor);
+      }
+
+      function drawSquaresRec(
+        i,
+        numSquares,
+        offsetIncrement,
+        startColor,
+        endColor
+      ) {
+        if (i >= numSquares) return;
+
+        const offset = i * offsetIncrement;
+        const size = width - 2 * offset;
+        const t = i / (numSquares - 1);
+        fill(lerpColor(startColor, endColor, t));
+        noStroke();
+        square(offset, offset, size);
+
+        drawSquaresRec(
+          i + 1,
+          numSquares,
+          offsetIncrement,
+          startColor,
+          endColor
+        );
+      }
+    </script>
+  </body>
+</html>

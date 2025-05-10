@@ -1,0 +1,95 @@
+/* ::root {
+  --rotation: 0;
+} */
+
+body {
+  min-height: 100vh;
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+}
+
+#main {
+  min-height: 100vh;
+  min-width: 100%;
+  background-image: radial-gradient(
+    circle farthest-corner at 10% 20%,
+    rgba(0, 97, 255, 1) 0%,
+    rgba(96, 239, 255, 1) 100.7%
+  );
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clock {
+  padding: 20px;
+  margin: auto;
+  position: relative;
+  border: 10px solid white;
+  min-width: 300px;
+  min-height: 300px;
+  border-radius: 100%;
+}
+
+.hour-indicator {
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  width: 4px;
+  height: 16px;
+  background: white;
+  transform-origin: bottom center;
+}
+
+.hour-indicator-text {
+  position: absolute;
+  top: 40%;
+  left: 47%;
+  color: white;
+  font-size: 30px;
+  transform-origin: bottom center;
+}
+
+.clock-face {
+  position: relative;
+  min-width: 300px;
+  min-height: 300px;
+  border-radius: 100%;
+}
+
+.center {
+  position: absolute;
+  background: black;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+}
+
+.hand {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: white;
+  transform: translate(-50%, -100%) rotate(calc(var(--rotation, 0) * 1deg));
+  transform-origin: bottom center;
+  transition: all 0.5s;
+  transition-timing-function: cubic-bezier(0.42, 2.02, 0.58, 1);
+
+  width: 5px;
+}
+.hour-hand {
+  height: 30%;
+}
+.min-hand {
+  height: 45%;
+}
+.second-hand {
+  height: 45%;
+}
